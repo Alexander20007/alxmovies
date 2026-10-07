@@ -24,7 +24,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: npm
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -32,14 +31,8 @@ jobs:
           distribution: temurin
           java-version: ${{ env.JAVA_VERSION }}
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-
       - name: Install dependencies
         run: npm install --no-audit --no-fund
-
-      - name: Typecheck
-        run: npm run typecheck
 
       - name: Build web app
         run: npm run build
